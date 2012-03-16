@@ -20,7 +20,11 @@ body .ac_results li {
 
 /* these styles override the site style.css to use the explorer-themed banner */
 body {
-    background:transparent url(../images/explorer-banner.jpg) center 20px repeat-x ! important;
+    /*background:transparent url(../images/explorer-banner.jpg) center 20px repeat-x ! important;*/
+    font: normal 1.2em/1.8em Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: #FFFEF7;
+    color: #333A3F;
 }
 
 #banner {

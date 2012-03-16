@@ -7,6 +7,8 @@ import au.org.ala.volunteer.TemplateField
 import au.org.ala.volunteer.DarwinCoreField
 import au.org.ala.volunteer.User
 import org.codehaus.groovy.grails.commons.ApplicationHolder
+import au.org.ala.volunteer.FrontPage
+import au.org.ala.volunteer.Project
 
 class BootStrap {
 
@@ -21,6 +23,16 @@ class BootStrap {
           myMap.put keyCount[0], keyCount[1]
         }
         myMap
+      }
+        
+      if (FrontPage.list()[0] == null) {
+          def frontPage = new FrontPage()
+          frontPage.featuredProjectId = Project.list()[0].id
+          frontPage.save()
+      }
+
+      FrontPage.metaClass.'static'.getFeaturedProjectId = { -> 
+          FrontPage.list()[0]?.featuredProjectId
       }
 
       //DDL - add cascading, currently not working from generated DDL from grails

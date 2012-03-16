@@ -1,5 +1,7 @@
 package au.org.ala.volunteer
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 class Project {
 
   String name
@@ -7,7 +9,11 @@ class Project {
   String bannerImage
   String tutorialLinks
   Boolean showMap = true
-  Date created
+  Date created    
+  String shortDescription
+  String featuredImage
+  String featuredLabel
+  String featuredOwner
 
   static belongsTo = [template: Template]
   static hasMany = [tasks:Task, projectAssociations:ProjectAssociation, newsItems: NewsItem]
@@ -28,9 +34,17 @@ class Project {
     bannerImage nullable: true
     showMap nullable: true
     tutorialLinks nullable: true, maxSize: 2000, widget:'textarea'
+    featuredImage nullable: true
+    featuredLabel nullable: true
+    featuredOwner nullable: true
+    shortDescription nullable: true
   }
 
     public String toString() {
         return name
+    }
+
+    public String getFeaturedImage() {
+        return "${ConfigurationHolder.config.server.url}/${ConfigurationHolder.config.images.urlPrefix}project/${id}/expedition-image.jpg"
     }
 }
