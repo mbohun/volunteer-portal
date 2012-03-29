@@ -4,6 +4,8 @@ import groovy.sql.Sql
 import org.codehaus.groovy.grails.commons.ConfigurationHolder
 import grails.converters.*
 import au.com.bytecode.opencsv.CSVWriter
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.MultipartFile
 
 class ProjectController {
 
@@ -394,5 +396,29 @@ class ProjectController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'project.label', default: 'Project'), params.id])}"
             redirect(action: "list")
         }
+    }
+    
+    def uploadFeaturedImage = {
+        def projectInstance = Project.get(params.id)
+
+        if(request instanceof MultipartHttpServletRequest) {
+            MultipartFile f = ((MultipartHttpServletRequest) request).getFile('featuredImage')
+            
+            if (f != null) {
+                def allowedMimeTypes = ['image/jpeg']
+                if (!allowedMimeTypes.contains(f.getContentType())) {
+                    flash.message = "Image must be one of: ${allowedMimeTypes}"
+                    render(view:'edit', model:[projectInstance:projectInstance])
+                    return;
+                }
+
+                def filePath = "${ConfigurationHolder.config.images.urlPrefix}project/${projectInstance.id}/expedition-image.jpg"
+                def file = new File(filePath);
+                file.getParentFile().mkdirs();
+                f.transferTo(file);
+
+            }
+        }
+        redirect(action: "edit", id: params.id)
     }
 }

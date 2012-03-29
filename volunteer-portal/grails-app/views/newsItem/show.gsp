@@ -34,6 +34,14 @@
                             <td valign="top" class="value">${fieldValue(bean: newsItemInstance, field: "title")}</td>
 
                         </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="newsItem.shortDescription.label" default="Short description" /></td>
+
+                            <td valign="top" class="value">${fieldValue(bean: newsItemInstance, field: "shortDescription")}</td>
+
+                        </tr>
+
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="newsItem.body.label" default="Body" /></td>

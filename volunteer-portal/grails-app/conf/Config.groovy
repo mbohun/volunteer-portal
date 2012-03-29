@@ -32,7 +32,7 @@ if (!ala.baseURL) {
 \******************************************************************************/
 if (!security.cas.urlPattern) {
     security.cas.urlPattern = "/transcribe/task/.*,/transcribe/save.*,/transcribe/.*,/validate/save.*," +
-            "/validate/.*,/user/.*,/project/.*,/task/projectAdmin.*,/newsItem/.*, /picklist/.*, /admin/.*"
+            "/validate/.*,/user/.*,/project/.*,/task/projectAdmin.*,/newsItem/.*, /picklist/.*, /admin/.*, /frontPage/.*"
 }
 if (!security.cas.urlExclusionPattern) {
     security.cas.urlExclusionPattern = "/images.*,/css.*,/js.*"
@@ -78,6 +78,8 @@ expedition = [
 
 volunteer.defaultProjectId = 6306
 viewedTask.timeout = 2 * 60 * 60 * 1000
+
+leaderBoard.count = 5
 
 ala.skin = "ala2"
 ala.baseURL = "http://www.ala.org.au"

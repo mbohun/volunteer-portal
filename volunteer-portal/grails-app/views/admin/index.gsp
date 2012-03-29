@@ -16,7 +16,9 @@
       <div class="list">
         <button style="float:left;margin:5px;" onclick="location.href='${createLink(controller:'admin', action:'mailingList')}'">Global mailing List</button>
         <button style="float:left;margin:5px;" onclick="location.href='${createLink(controller:'picklist', action:'manage')}'">Bulk manage picklists</button>
+        <button style="float:left;margin:5px;" onclick="location.href='${createLink(controller:'frontPage', action:'edit')}'">Configure front page</button>
       </div>
     </div>
+    <br />
 </body>
 </html>

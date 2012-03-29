@@ -39,6 +39,15 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="shortDescription"><g:message code="newsItem.shortDescription.label" default="Short description" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: newsItemInstance, field: 'shortDescription', 'errors')}">
+                                    <g:textArea cols="50" rows="4" name="shortDescription" value="${newsItemInstance?.shortDescription}" />
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="body"><g:message code="newsItem.body.label" default="Body" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: newsItemInstance, field: 'body', 'errors')}">

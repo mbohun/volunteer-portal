@@ -26,7 +26,7 @@
                 <g:hiddenField name="id" value="${projectInstance?.id}" />
                 <g:hiddenField name="version" value="${projectInstance?.version}" />
                 <div class="dialog">
-                    <table>
+                    <table align="center">
                         <tbody>
                         
                             <tr class="prop">
@@ -116,7 +116,6 @@
                                 </td>
                             </tr>
 
-
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="newsItems"><g:message code="project.newsItems.label" default="News Items" /></label>
@@ -182,6 +181,27 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
             </g:form>
+        </div>
+        <br />
+        <div>
+          <table align="center" border="1">
+            <thead><tr><td colspan="3">Image Upload</td></tr></thead>
+            <tr>
+              <td style="vertical-align: middle;">
+                <label><g:message code="project.featuredImage.label" default="Featured Image" /></label>
+              </td>
+              <td>
+                <img src="${projectInstance?.featuredImage}" align="middle"/>
+              </td>
+              <td style="vertical-align: middle;">
+                <g:form action="uploadFeaturedImage" controller="project" method="post" enctype="multipart/form-data">
+                  <input type="file" name="featuredImage" />
+                  <input type="hidden" name="id" value="${projectInstance.id}" />
+                  <g:submitButton name="Upload" />
+                </g:form>
+              </td>
+            </tr>
+          </table>
         </div>
     </body>
 </html>

@@ -44,8 +44,16 @@
         </hgroup>
         <nav id="nav-1-2-3">
           <ol>
-            <li><span class="numbered">1</span> <a href="https://auth.ala.org.au/emmet/selfRegister.html" class="button orange">Register</a> <p>Already registered with the Atlas?<br><a href="https://auth.ala.org.au/cas/login?service=http://test.ala.org.au/wp-login.php?redirect_to=http://test.ala.org.au/biodiversity-volunteer-portal/">Log in</a>.</p></li>
-            <li class="double"><div style="float:left;postition:relative;"><span class="numbered">2</span> <a href="" class="button orange">Join a virtual expedition</a> <p><a href="/virtual-expeditions/">Find a virtual expedition</a> that suits you.</p></div><span class="grey" style="float:left;postition:relative;">or</span> <div style="float:left;postition:relative;"><a href="" class="button orange">Start transcribing</a> <p>Join the <a href="">virutal expedition of the day</a>.</p></div></li>
+            <li>
+              <cl:isNotLoggedIn>
+                <span class="numbered">1</span> <a href="https://auth.ala.org.au/emmet/selfRegister.html" class="button orange">Register</a> <p>Already registered with the Atlas?<br><a href="https://auth.ala.org.au/cas/login?service=http://test.ala.org.au/wp-login.php?redirect_to=http://test.ala.org.au/biodiversity-volunteer-portal/">Log in</a>.</p>
+              </cl:isNotLoggedIn>
+              <cl:isLoggedIn>
+                <span class="numbered">1</span> <h2>Hi !</h2><p>You're registered with the Atlas, so <a href="">start transcribing</a> or <a href="">view your tasks</a>.</p>
+              </cl:isLoggedIn>
+            </li>
+            <li class="double"><div style="float:left;postition:relative;"><span class="numbered">2</span> <a href="" class="button orange">Join a virtual expedition</a> <p><a href="/virtual-expeditions/">Find a virtual expedition</a> that suits you.</p></div><span class="grey" style="float:left;postition:relative;">or</span>
+              <div style="float:left;postition:relative;"><a href="" class="button orange">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe-orange.png" width="37" height="18" alt=""></a> <p>Join the <a href="">virutal expedition of the day</a>.</p></div></li>
             <li class="last"><span class="numbered">3</span> <a href="" class="button orange">Become a leader</a> <p>Are you ready to become an <a href="">expedition leader</a>?</p></li>
           </ol>
         </nav>
@@ -60,19 +68,19 @@
           <p>Help capture the wealth of information hidden in our natural history collections, field notebooks and survey sheets. This information will be used for better understanding, managing and conserving our precious biodiversity. <a href="/about-the-biodiversity-volunteer-portal/" class="button">Learn more</a></p>
 
           <h2 class="orange">Virtual expedition of the day</h2>
-          <div class="button-nav"><a href="/volunteer-portal/project/index/122476" style="background-image:url(${featuredProject.featuredImage});"><h2>${featuredProject.featuredLabel}</h2></a></div>
+          <div class="button-nav"><a href="/volunteer-portal/project/index/${frontPage.projectOfTheDay.id}" style="background-image:url(${frontPage.projectOfTheDay.featuredImage});"><h2>${frontPage.projectOfTheDay.featuredLabel}</h2></a></div>
           <div>
-            <span class="eyebrow">${featuredProject.featuredOwner}</span>
-            <h2 class="grey"><a href="/volunteer-portal/project/index/${featuredProject.id}">${featuredProject.name}</a></h2>
-            <p>${featuredProject.shortDescription} <a href="/volunteer-portal/project/index/${featuredProject.id}" class="button">Start transcribing</a></p>
+            <span class="eyebrow">${frontPage.projectOfTheDay.featuredOwner}</span>
+            <h2 class="grey"><a href="/volunteer-portal/project/index/${frontPage.projectOfTheDay.id}">${frontPage.projectOfTheDay.name}</a></h2>
+            <p>${frontPage.projectOfTheDay.shortDescription} <a href="/volunteer-portal/project/index/${frontPage.projectOfTheDay.id}" class="button">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe.png" width="37" height="18" alt=""></a></p>
           </div>
 
           <hgroup><h2 class="alignleft">More expeditions</h2><a href="/biodiversity-volunteer-portal/virtual-expeditions/" class="button alignright">View all</a></hgroup>
           <nav>
             <ol>
-              <li><a href="" style="background-image:url(http://test.ala.org.au/wp-content/themes/ala2011/images/expedition-am-cicadas.jpg);"><h2>Cicadas</h2></a></li>
-              <li><a href="" style="background-image:url(http://test.ala.org.au/wp-content/themes/ala2011/images/expedition-am-leafhoppers.jpg);"><h2>Leafhoppers</h2></a></li>
-              <li class="last"><a href="" style="background-image:url(http://test.ala.org.au/wp-content/themes/ala2011/images/expedition-am-planthoppers.jpg);"><h2>Planthoppers</h2></a></li>
+              <li><a href="/volunteer-portal/project/index/${frontPage.featuredProject1.id}" style="background-image:url(${frontPage.featuredProject1.featuredImage});"><h2>${frontPage.featuredProject1.featuredLabel}</h2></a></li>
+              <li><a href="/volunteer-portal/project/index/${frontPage.featuredProject2.id}" style="background-image:url(${frontPage.featuredProject2.featuredImage});"><h2>${frontPage.featuredProject2.featuredLabel}</h2></a></li>
+              <li class="last"><a href="/volunteer-portal/project/index/${frontPage.featuredProject3.id}" style="background-image:url(${frontPage.featuredProject3.featuredImage});"><h2>${frontPage.featuredProject3.featuredLabel}</h2></a></li>
             </ol>
           </nav>
         </section>
@@ -87,26 +95,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Deborah Cox</td>
-                <td>2138</td>
-              </tr>
-              <tr>
-                <td>Jim Richardson</td>
-                <td>2134</td>
-              </tr>
-              <tr>
-                <td>Rhiannon Stephens</td>
-                <td>1234</td>
-              </tr>
-              <tr>
-                <td>Donald Hobern</td>
-                <td>765</td>
-              </tr>
-              <tr>
-                <td>Dave Martin</td>
-                <td>3</td>
-              </tr>
+              <g:each in="${leaderBoard}" var="transcriber">
+                <tr>
+                  <td>${transcriber.displayName}</td>
+                  <td>
+                    <g:if test="${transcriber.transcribedCount > 0}">
+                      ${transcriber.transcribedCount}
+                    </g:if>
+                  </td>
+                </tr>
+              </g:each>
             </tbody>
           </table>
         </section>
@@ -114,16 +112,22 @@
         <section id="expedition-stats">
           <h2>Expedition stats</h2>
           <ul>
-            <li><strong>5175</strong> tasks of <strong>14320</strong> completed</li>
-            <li><strong>95</strong> volunteer transcribers</li>
+            <li><strong>${completedTasks}</strong> tasks of <strong>${totalTasks}</strong> completed</li>
+            <li><strong>${transcriberCount}</strong> volunteer transcribers</li>
           </ul>
         </section>
         <section>
           <h2>News</h2>
           <article>
-            <time datetime="2012-03-07">7 March 2012</time>
-            <h3><a href="">Froghopper expedition complete</a></h3>
-            <p>Well done Jim Richardson for leading the <a href="/virtual-expedtions/">Froghopper Expedition</a> to completion!</p>
+            <time datetime="${formatDate(format: "yyyy-MM-dd", date: newsItem.created)}"><g:formatDate format="dd MMM yyyy" date="${newsItem.created}" /></time>
+            <h3><g:link action="show" controller="newsItem" id="${newsItem.id}">${newsItem.title}</g:link></h3>
+            <p>
+              ${newsItem.shortDescription}
+              <g:if test="${frontPage.useGlobalNewsItem == false}">
+                <g:link controller="newsItem" action="show" id="${newsItem.id}">Read more...</g:link>
+              </g:if>
+            </p>
+            
           </article>
         </section>
       </div>
