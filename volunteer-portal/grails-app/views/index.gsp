@@ -14,11 +14,11 @@
             background-color: transparent !important;
         }
 
-        .volunteerportal #page-header {
-        	background:#f0f0e8 url(${resource(dir:'images/vp',file:'bg_volunteerportal.jpg')}) center top no-repeat;
-        	padding-bottom:12px;
-        	border:1px solid #d1d1d1;
-        }
+        %{--.volunteerportal #page-header {--}%
+        	%{--background:#f0f0e8 url(${resource(dir:'images/vp',file:'bg_volunteerportal.jpg')}) center top no-repeat;--}%
+        	%{--padding-bottom:12px;--}%
+        	%{--border:1px solid #d1d1d1;--}%
+        %{--}--}%
       </style>
 
   </head>
@@ -50,7 +50,7 @@
                 <span class="numbered">1</span> <a href="https://auth.ala.org.au/emmet/selfRegister.html" class="button orange">Register</a> <p>Already registered with the Atlas?<br><a href="https://auth.ala.org.au/cas/login?service=${ConfigurationHolder.config.grails.serverURL}?redirect_to=${ConfigurationHolder.config.grails.serverURL}">Log in</a>.</p>
               </cl:isNotLoggedIn>
               <cl:isLoggedIn>
-                <span class="numbered">1</span> <h2>Hi !</h2><p>You're registered with the Atlas, so <a href="">start transcribing</a> or <a href="">view your tasks</a>.</p>
+                <span class="numbered">1</span> <h2>Hi !</h2><p>You're registered with the Atlas, so <a href="${createLink(controller: 'project', id: frontPage.projectOfTheDay.id, action: 'index')}">start transcribing</a> or <a href="">view your tasks</a>.</p>
               </cl:isLoggedIn>
             </li>
             <li class="double"><div style="float:left;postition:relative;">

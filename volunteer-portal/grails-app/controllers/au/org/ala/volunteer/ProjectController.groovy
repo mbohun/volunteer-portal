@@ -11,6 +11,8 @@ class ProjectController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    static numbers = ["Zero","One", 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty']
+
     def taskService
     def fieldService
     def auditService
@@ -275,14 +277,95 @@ class ProjectController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [projectInstanceList: Project.list(params), projectInstanceTotal: Project.count(),
-                projectTaskCounts: taskService.getProjectTaskCounts(),
-                projectFullyTranscribedCounts: taskService.getProjectTaskFullyTranscribedCounts(),
-                projectTaskTranscribedCounts: taskService.getProjectTaskTranscribedCounts(),
-                projectTaskValidatedCounts: taskService.getProjectTaskValidatedCounts(),
-                projectTaskViewedCounts: auditService.getProjectTaskViewedCounts(),
-                viewCountPerProject: auditService.getViewCountPerProject()
+        params.max = Math.min(params.max ? params.int('max') : 5, 100)
+
+        if (params.sort && session.expeditionSort) {
+            if (params.sort == session.expeditionSort) {
+                params.order = (params.order == 'desc' ? 'asc' : 'desc')
+            } else {
+                params.order = 'asc'
+            }
+        }
+
+
+        params.sort = params.sort ? params.sort : session.expeditionSort ? session.expeditionSort : 'name'
+
+        def projectList = Project.list()
+
+        def taskCounts = taskService.getProjectTaskCounts()
+        def fullyTranscribedCounts = taskService.getProjectTaskFullyTranscribedCounts()
+
+        def projects = [:]
+        def incompleteCount = 0;
+        for (Project project : projectList) {
+            def percent = ((fullyTranscribedCounts[project.id] / taskCounts[project.id]) * 100)
+            if (percent < 100) {
+                incompleteCount++;
+            }
+            def iconImage = 'icon_specimens.png'
+            def iconLabel = 'Specimens'
+
+            if (project.template.name.equalsIgnoreCase('Journal')) {
+                iconImage = 'icon_fieldnotes.png'
+                iconLabel = 'Field notes'
+            }
+
+            def volunteer = User.findAll("from User where userId in (select distinct fullyTranscribedBy from Task where project_id = ${project.id})")
+
+            projects[project.id] = [id: project.id, project: project, iconLabel: iconLabel, iconImage: iconImage, volunteerCount: volunteer.size(), countComplete: taskCounts[project.id] , percentComplete: percent ? Math.round(percent) : 0 ]
+
+        }
+
+        def numberOfUncompletedProjects = incompleteCount < numbers.size() ? numbers[incompleteCount] : "" + incompleteCount;
+
+
+        def renderList = projects.sort { kvp ->
+
+            if (params.sort == 'completed') {
+                return kvp.value.percentComplete
+            }
+
+            if (params.sort == 'volunteers') {
+                return kvp.value.volunteerCount;
+            }
+
+            if (params.sort == 'institution') {
+                return kvp.value.project.featuredOwner;
+            }
+
+            if (params.sort == 'type') {
+                return kvp.value.iconLabel;
+            }
+
+            kvp.value.project.featuredLabel
+        }
+
+        int startIndex = params.offset ? params.int('offset') : 0;
+        if (startIndex >= renderList.size()) {
+            startIndex = renderList.size() - max;
+            if (startIndex < 0) {
+                startIndex = 0;
+            }
+        }
+
+        int endIndex = startIndex + params.int('max') - 1;
+        if (endIndex >= renderList.size()) {
+            endIndex = renderList.size() - 1;
+        }
+
+        renderList = renderList.collect({ kvp -> kvp.value })
+
+        if (params.order == 'desc') {
+            renderList = renderList.reverse()
+        }
+
+
+        session.expeditionSort = params.sort;
+
+        [
+            projects: renderList[startIndex .. endIndex],
+            projectInstanceTotal: Project.count(),
+            numberOfUncompletedProjects: numberOfUncompletedProjects
         ]
     }
 

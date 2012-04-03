@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="http://www.ala.org.au/wp-content/themes/ala2011/css/buttons.css" type="text/css" media="screen" />
     <link rel="icon" type="image/x-icon" href="http://www.ala.org.au/wp-content/themes/ala2011/images/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="http://www.ala.org.au/wp-content/themes/ala2011/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="http://www.ala.org.au/wp-content/themes/ala2011/css/jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="http://www.ala.org.au/wp-content/themes/ala2011/css/search.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="http://www.ala.org.au/wp-content/themes/ala2011/css/skin.css" />
@@ -67,6 +68,19 @@
             -khtml-border-radius: 0;
             border-radius: 0;
         }
+
+
+       .volunteerportal #page-header {
+        	background:#f0f0e8 url(${resource(dir:'images/vp',file:'bg_volunteerportal.jpg')}) center top no-repeat;
+        	padding-bottom:12px;
+        	border:1px solid #d1d1d1;
+       }
+
+       .volunteerportal.sublevel #page-header {
+         background:#f0f0e8;
+         background-image:url(${resource(dir:'images/vp',file:'bg_volunteerportal-sub.jpg')});
+       }
+
     </style>
 
     <g:layoutHead />

@@ -403,38 +403,58 @@ div#ui-datepicker-div {
 
 /* temporary pagination buttons */
 
+.step {
+    text-decoration: none;
+    border: 1px solid #3A5C83;
+    padding: 3px 7px;
+    margin: 2px;
+    text-decoration: none !important;
+}
+
+.currentStep {
+    border: 1px solid #DF4A21;
+    color: white;
+    background-color: #DF4A21;
+    cursor: default;
+    padding: 3px 7px;
+    margin: 2px;
+}
+
 .paginateButtons {
     float: right;
-    margin-right: 60px;
     text-align:center;
     padding-bottom: 20px;
 }
 
-.paginateButtons span {
-    float:right;
-    margin:0 auto;
-}
-.section .paginateButtons a, .currentStep{
-    display:inline-block;
-    padding:0 5px;
-    border:1px solid #01716e;
-    text-decoration:none;
-    float:left;
-    margin:0 5px 0 0;
+.nextLink {
+    display: none;
 }
 
-span.currentStep{
-    display:inline-block;
-    padding:0 5px;
-    border:1px solid #01716e;
-    text-decoration:none;
-    float:left;
-    margin:0 5px 0 0;
+.prevLink {
+    display: none;
 }
 
-span.currentStep { border-color:#ccc; color:#dd3102; }
+/*.section .paginateButtons a, .currentStep{*/
+    /*display:inline-block;*/
+    /*padding:0 5px;*/
+    /*border:1px solid #01716e;*/
+    /*text-decoration:none;*/
+    /*float:left;*/
+    /*margin:0 5px 0 0;*/
+/*}*/
 
-.paginateButtons a:hover {border-color:#dd3102;text-decoration:underline;}
+/*span.currentStep{*/
+    /*display:inline-block;*/
+    /*padding:0 5px;*/
+    /*border:1px solid #01716e;*/
+    /*text-decoration:none;*/
+    /*float:left;*/
+    /*margin:0 5px 0 0;*/
+/*}*/
+
+/*span.currentStep { border-color:#ccc; color:#dd3102; }*/
+
+/*.paginateButtons a:hover {border-color:#dd3102;text-decoration:underline;}*/
 .section .paginateButtons .prevLink, .section .paginateButtons .nextLink {border:none;}
 .prevLink {text-align:right;}
 .nextLink {text-align:center;}
@@ -533,26 +553,26 @@ div.list table tr.odd {
     padding-bottom: 5px;
 }
 
-#recordsChart {
+/*#recordsChart {*/
     /*width: 140px;*/
-    float: left;
-    padding:  12px;
-    height: 1.5em;
-}
+    /*float: left;*/
+    /*padding:  12px;*/
+    /*height: 1.5em;*/
+/*}*/
 
-#recordsChartWidget {
+/*#recordsChartWidget {*/
     /*display: inline-block;*/
     /*float: right;*/
-    width: 395px;
-    margin: 10px 0;
-    height: 1.5em;
-    vertical-align: middle;
-}
+    /*width: 395px;*/
+    /*margin: 10px 0;*/
+    /*height: 1.5em;*/
+    /*vertical-align: middle;*/
+/*}*/
 
-#recordsChartWidget .ui-widget-header {
-    border: 1px solid #C9AB67;
-    background: #CEC193 url(../images/progress_1x100b.png) 50% 50% repeat-x;
-}
+/*#recordsChartWidget .ui-widget-header {*/
+    /*border: 1px solid #C9AB67;*/
+    /*background: #CEC193 url(../images/progress_1x100b.png) 50% 50% repeat-x;*/
+/*}*/
 
 #progress .ui-widget-content {
     border: 1px solid #C9AB67;
