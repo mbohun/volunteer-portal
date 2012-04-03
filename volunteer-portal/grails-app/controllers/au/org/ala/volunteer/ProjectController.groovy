@@ -412,10 +412,16 @@ class ProjectController {
                     return;
                 }
 
-                def filePath = "${ConfigurationHolder.config.images.urlPrefix}project/${projectInstance.id}/expedition-image.jpg"
-                def file = new File(filePath);
-                file.getParentFile().mkdirs();
-                f.transferTo(file);
+                try {
+                    def filePath = "${ConfigurationHolder.config.images.home}/project/${projectInstance.id}/expedition-image.jpg"
+                    def file = new File(filePath);
+                    file.getParentFile().mkdirs();
+                    f.transferTo(file);
+                } catch (Exception ex) {
+                    flash.message = "Failed to upload image: " + ex.message;
+                    render(view:'edit', model:[projectInstance:projectInstance])
+                    return;
+                }
 
             }
         }
