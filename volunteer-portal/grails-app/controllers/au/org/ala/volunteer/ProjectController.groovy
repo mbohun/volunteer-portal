@@ -277,18 +277,9 @@ class ProjectController {
     }
 
     def list = {
-        params.max = Math.min(params.max ? params.int('max') : 5, 100)
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
-        if (params.sort && session.expeditionSort) {
-            if (params.sort == session.expeditionSort) {
-                params.order = (params.order == 'desc' ? 'asc' : 'desc')
-            } else {
-                params.order = 'asc'
-            }
-        }
-
-
-        params.sort = params.sort ? params.sort : session.expeditionSort ? session.expeditionSort : 'name'
+        params.sort = params.sort ? params.sort : session.expeditionSort ? session.expeditionSort : 'completed'
 
         def projectList = Project.list()
 
@@ -318,26 +309,27 @@ class ProjectController {
 
         def numberOfUncompletedProjects = incompleteCount < numbers.size() ? numbers[incompleteCount] : "" + incompleteCount;
 
+        def renderList = projects.collect({ kvp -> kvp.value })
 
-        def renderList = projects.sort { kvp ->
+        renderList = renderList.sort { p ->
 
             if (params.sort == 'completed') {
-                return kvp.value.percentComplete
+                return p.percentComplete
             }
 
             if (params.sort == 'volunteers') {
-                return kvp.value.volunteerCount;
+                return p.volunteerCount;
             }
 
             if (params.sort == 'institution') {
-                return kvp.value.project.featuredOwner;
+                return p.project.featuredOwner;
             }
 
             if (params.sort == 'type') {
-                return kvp.value.iconLabel;
+                return p.iconLabel;
             }
 
-            kvp.value.project.featuredLabel
+            p.project.featuredLabel
         }
 
         int startIndex = params.offset ? params.int('offset') : 0;
@@ -352,8 +344,6 @@ class ProjectController {
         if (endIndex >= renderList.size()) {
             endIndex = renderList.size() - 1;
         }
-
-        renderList = renderList.collect({ kvp -> kvp.value })
 
         if (params.order == 'desc') {
             renderList = renderList.reverse()

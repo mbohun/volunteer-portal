@@ -41,11 +41,11 @@
         </colgroup>
         <thead>
         <tr>
-          <th><a href="?sort=name&order=${params.order}&offset=0" class="button ${params.sort == 'name' ? 'current' : ''}">Name</a></th>
-          <th><a href="?sort=completed&order=${params.order}&offset=0" class="button ${params.sort == 'completed' ? 'current' : ''}">Tasks completed</a></th>
-          <th><a href="?sort=volunteers&order=${params.order}&offset=0" class="button ${params.sort == 'volunteers' ? 'current' : ''}">Volunteers</a></th>
-          <th><a href="?sort=institution&order=${params.order}&offset=0" class="button ${params.sort == 'institution' ? 'current' : ''}">Sponsoring Institution</a></th>
-          <th><a href="?sort=type&order=${params.order}&offset=0" class="button ${params.sort == 'type' ? 'current' : ''}">Type</a></th>
+          <th><a href="?sort=name&order=${params.sort == 'name' && params.order != 'desc' ? 'desc' : 'asc'}&offset=0" class="button ${params.sort == 'name' ? 'current' : ''}">Name</a></th>
+          <th><a href="?sort=completed&order=${params.sort == 'completed' && params.order != 'desc' ? 'desc' : 'asc'}&offset=0" class="button ${params.sort == 'completed' ? 'current' : ''}">Tasks completed</a></th>
+          <th><a href="?sort=volunteers&order=${params.sort == 'volunteers' && params.order != 'desc' ? 'desc' : 'asc'}&offset=0" class="button ${params.sort == 'volunteers' ? 'current' : ''}">Volunteers</a></th>
+          <th><a href="?sort=institution&order=${params.sort == 'institution' && params.order != 'desc' ? 'desc' : 'asc'}&offset=0" class="button ${params.sort == 'institution' ? 'current' : ''}">Sponsoring Institution</a></th>
+          <th><a href="?sort=type&order=${params.sort == 'type' && params.order != 'desc' ? 'desc' : 'asc'}&offset=0" class="button ${params.sort == 'type' ? 'current' : ''}">Type</a></th>
         </tr>
         </thead>
         <tbody>
