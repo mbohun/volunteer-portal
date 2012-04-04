@@ -69,18 +69,6 @@
             border-radius: 0;
         }
 
-
-       .volunteerportal #page-header {
-        	background:#f0f0e8 url(${resource(dir:'images/vp',file:'bg_volunteerportal.jpg')}) center top no-repeat;
-        	padding-bottom:12px;
-        	border:1px solid #d1d1d1;
-       }
-
-       .volunteerportal.sublevel #page-header {
-         background:#f0f0e8;
-         background-image:url(${resource(dir:'images/vp',file:'bg_volunteerportal-sub.jpg')});
-       }
-
     </style>
 
     <g:layoutHead />

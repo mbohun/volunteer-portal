@@ -14,15 +14,9 @@
             background-color: transparent !important;
         }
 
-        %{--.volunteerportal #page-header {--}%
-        	%{--background:#f0f0e8 url(${resource(dir:'images/vp',file:'bg_volunteerportal.jpg')}) center top no-repeat;--}%
-        	%{--padding-bottom:12px;--}%
-        	%{--border:1px solid #d1d1d1;--}%
-        %{--}--}%
       </style>
-
   </head>
-  <body class="sub-site volunteerportal">
+  <body class="sublevel sub-site volunteerportal">
 
     <nav id="nav-site">
       <ul class="sf sf-js-enabled">
@@ -50,13 +44,17 @@
                 <span class="numbered">1</span> <a href="https://auth.ala.org.au/emmet/selfRegister.html" class="button orange">Register</a> <p>Already registered with the Atlas?<br><a href="https://auth.ala.org.au/cas/login?service=${ConfigurationHolder.config.grails.serverURL}?redirect_to=${ConfigurationHolder.config.grails.serverURL}">Log in</a>.</p>
               </cl:isNotLoggedIn>
               <cl:isLoggedIn>
-                <span class="numbered">1</span> <h2>Hi !</h2><p>You're registered with the Atlas, so <a href="${createLink(controller: 'project', id: frontPage.projectOfTheDay.id, action: 'index')}">start transcribing</a> or <a href="">view your tasks</a>.</p>
+                <span class="numbered">1</span> <h2>Hi !</h2><p>You're registered with the Atlas, so <a href="${createLink(controller: 'transcribe', id: frontPage.projectOfTheDay.id, action: 'index')}">start transcribing</a> or <a href="${createLink(controller: 'user', action:'myStats')}">view your tasks</a>.</p>
               </cl:isLoggedIn>
             </li>
             <li class="double"><div style="float:left;postition:relative;">
               <span class="numbered">2</span> <a href="${createLink(controller: 'project', action: 'list')}" class="button orange">Join a virtual expedition</a> <p><a href="${createLink(controller: 'project', action: 'list')}">Find a virtual expedition</a> that suits you.</p></div><span class="grey" style="float:left;postition:relative;">or</span>
-              <div style="float:left;postition:relative;"><a href="${createLink(controller: 'project', id: frontPage.projectOfTheDay.id, action: 'index')}" class="button orange">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe-orange.png" width="37" height="18" alt=""></a> <p>Join the <a href="${createLink(controller: 'project', id: frontPage.projectOfTheDay.id, action: 'index')}">virutal expedition of the day</a>.</p></div></li>
-            <li class="last"><span class="numbered">3</span> <a href="" class="button orange">Become a leader</a> <p>Are you ready to become an <a href="">expedition leader</a>?</p></li>
+              <div style="float:left;postition:relative;"><a href="${createLink(controller: 'transcribe', id: frontPage.projectOfTheDay.id, action: 'index')}" class="button orange">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe-orange.png" width="37" height="18" alt=""></a> <p>Join the <a href="${createLink(controller: 'project', id: frontPage.projectOfTheDay.id, action: 'index')}">virutal expedition of the day</a>.</p></div>
+            </li>
+
+            <li class="last">
+              <span class="numbered">3</span><a href="${createLink(controller: 'user', action:'list')}" class="button orange">Become a leader</a> <p>Are you ready to become an <a href="${createLink(controller: 'user', action:'list')}">expedition leader</a>?</p>
+            </li>
           </ol>
         </nav>
       </div><!--inner-->
@@ -67,14 +65,14 @@
       <div class="col-wide">
         <section>
           <h1 class="orange">Help us capture Australia's biodiversity</h1>
-          <p>Help capture the wealth of information hidden in our natural history collections, field notebooks and survey sheets. This information will be used for better understanding, managing and conserving our precious biodiversity. <a href="${createLink(uri: '/About.gsp')}" class="button">Learn more</a></p>
+          <p>Help capture the wealth of information hidden in our natural history collections, field notebooks and survey sheets. This information will be used for better understanding, managing and conserving our precious biodiversity. <a href="${createLink(uri: '/about.gsp')}" class="button">Learn more</a></p>
 
           <h2 class="orange">Virtual expedition of the day</h2>
           <div class="button-nav"><a href="${ConfigurationHolder.config.grails.serverURL}/project/index/${frontPage.projectOfTheDay.id}" style="background-image:url(${frontPage.projectOfTheDay.featuredImage});"><h2>${frontPage.projectOfTheDay.featuredLabel}</h2></a></div>
           <div>
             <span class="eyebrow">${frontPage.projectOfTheDay.featuredOwner}</span>
             <h2 class="grey"><a href="${ConfigurationHolder.config.grails.serverURL}/project/index/${frontPage.projectOfTheDay.id}">${frontPage.projectOfTheDay.name}</a></h2>
-            <p>${frontPage.projectOfTheDay.shortDescription} <a href="${ConfigurationHolder.config.grails.serverURL}/project/index/${frontPage.projectOfTheDay.id}" class="button">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe.png" width="37" height="18" alt=""></a></p>
+            <p>${frontPage.projectOfTheDay.shortDescription} <a href="${ConfigurationHolder.config.grails.serverURL}/transcribe/index/${frontPage.projectOfTheDay.id}" class="button">Start transcribing <img src="http://www.ala.org.au/wp-content/themes/ala2011/images/button_transcribe.png" width="37" height="18" alt=""></a></p>
           </div>
 
           <hgroup><h2 class="alignleft">More expeditions</h2><a href="${createLink(controller: 'project', action: 'list')}" class="button alignright">View all</a></hgroup>
@@ -93,7 +91,7 @@
           <table border="0" class="borders">
             <thead>
               <tr>
-                <th colspan="2"><h2>Leader board</h2> <a class="button alignright" href="/leader-board/">View all</a></th>
+                <th colspan="2"><h2>Leader board</h2> <a class="button alignright" href="${createLink(controller:'user', action:'list')}">View all</a></th>
               </tr>
             </thead>
             <tbody>

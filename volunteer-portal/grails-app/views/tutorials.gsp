@@ -23,7 +23,7 @@
       </style>
 
   </head>
-  <body class="page-parent page-child parent-pageid-27568 page-template page-template-vp-expeditions-php sublevel sub-site volunteerportal">
+  <body class="sublevel sub-site volunteerportal">
 
     <nav id="nav-site">
       <ul class="sf sf-js-enabled">
@@ -43,12 +43,34 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:message code="default.tutorials.label" default="Tutorials" /></span>
         </div>
-
-        <h1>Tutorials</h1>
+        <hgroup>
+          <h1>Tutorials</h1>
+        </hgroup>
       </div>
     </header>
-    <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Introduction.swf"><g:message code="default.tutorial.introduction.label" default="Introduction"/></a>
-    <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Mapping_Tool2.swf"><g:message code="default.tutorial.introduction.label" default="Mapping tool"/></a>
-    <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Transcribing.swf"><g:message code="default.tutorial.introduction.label" default="Transcribing"/></a>
+    <div class="body">
+      <div class="inner">
+        <table class="bvp-expeditions">
+          <tr>
+            <td>
+              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Introduction.swf"><g:message code="default.tutorial.introduction.label" default="Introduction"/></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Mapping_Tool2.swf"><g:message code="default.tutorial.introduction.label" default="Mapping tool"/></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Transcribing.swf"><g:message code="default.tutorial.introduction.label" default="Transcribing"/></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+
   </body>
 </html>

@@ -6,7 +6,7 @@
     <meta name="layout" content="${ConfigurationHolder.config.ala.skin}"/>
     <title><g:message code="frontPage.label" default="Front Page Configuration"/></title>
   </head>
-  <body class="two-column-right">
+  <body class="sublevel sub-site volunteerportal">
     <div class="nav">
       <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
       <span class="menuButton">ConfigureFrontPage</span>

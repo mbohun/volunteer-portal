@@ -5,15 +5,16 @@
         <meta name="layout" content="${ConfigurationHolder.config.ala.skin}"/>
         <g:set var="entityName" value="${message(code: 'project.label', default: 'Project')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <link rel="stylesheet" href="${resource(dir:'css',file:'vp.css')}" />
     </head>
-    <body>
+    <body class="sublevel sub-site volunteerportal">
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:message code="default.edit.label" args="[entityName]" /></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+            <h2><g:message code="default.edit.label" args="[entityName]" /></h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -25,7 +26,7 @@
             <g:form method="post" >
                 <g:hiddenField name="id" value="${projectInstance?.id}" />
                 <g:hiddenField name="version" value="${projectInstance?.version}" />
-                <div class="dialog">
+                <div class="inner">
                     <table align="center">
                         <tbody>
                         
@@ -156,6 +157,16 @@
                                     <g:checkBox name="showMap" value="${projectInstance?.showMap}" />
                                 </td>
                             </tr>
+
+                            <tr class="prop">
+                                <td valign="middle" class="name">
+                                    <label><g:message code="project.tasks.label" default="Tasks" /></label>
+                                </td>
+                                <td valign="middle" class="value">
+                                  <a class="button" href="${createLink(controller: 'task', action: 'load', id: projectInstance.id)}">Load tasks...</a>
+                                </td>
+                            </tr>
+
                         
                             %{--<tr class="prop">--}%
                                 %{--<td valign="top" class="name">--}%

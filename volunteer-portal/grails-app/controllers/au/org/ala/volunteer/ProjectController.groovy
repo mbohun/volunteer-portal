@@ -289,7 +289,10 @@ class ProjectController {
         def projects = [:]
         def incompleteCount = 0;
         for (Project project : projectList) {
-            def percent = ((fullyTranscribedCounts[project.id] / taskCounts[project.id]) * 100)
+            def percent = 0;
+            if (taskCounts[project.id] && fullyTranscribedCounts[project.id]) {
+                percent = ((fullyTranscribedCounts[project.id] / taskCounts[project.id]) * 100)
+            }
             if (percent < 100) {
                 incompleteCount++;
             }

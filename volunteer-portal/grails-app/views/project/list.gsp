@@ -6,7 +6,6 @@
   <meta name="layout" content="${ConfigurationHolder.config.ala.skin}"/>
   <g:set var="entityName" value="${message(code: 'project.label', default: 'Project')}"/>
   <title><g:message code="default.list.label" args="[entityName]"/></title>
-  <link rel="stylesheet" href="${resource(dir:'css',file:'vp.css')}" />
   <style type="text/css">
 
     .ui-widget-header {
@@ -19,7 +18,7 @@
     }
   </style>
 </head>
-<body class="page page-id-27570 page-parent page-child parent-pageid-27568 page-template page-template-vp-expeditions-php logged-in admin-bar sublevel sub-site volunteerportal">
+<body class="sublevel sub-site volunteerportal">
   <nav id="nav-site">
     <ul class="sf sf-js-enabled">
       <li class="nav-bvp"><a href="${createLink(uri: '/')}">Biodiversity Volunteer Portal</a></li>
@@ -29,9 +28,16 @@
   </nav>
     <header id="page-header">
       <div class="inner">
-        <nav id="breadcrumb"><ol><li><a href="/biodiversity-volunteer-portal/">Biodiversity Volunteer Portal</a></li> <li class="last">Virtual expeditions</li></ol></nav>
+        <nav id="breadcrumb">
+          <ol>
+            <li><a href="${createLink(uri: '/')}">Biodiversity Volunteer Portal</a></li>
+            <li class="last">Virtual expeditions</li>
+          </ol>
+        </nav>
+        <hgroup>
           <h1>Volunteer for a virtual expedition</h1>
-        </div><!--inner-->
+        </hgroup>
+      </div><!--inner-->
     </header>
     <div class="inner">
       <h2>${numberOfUncompletedProjects} expeditions need your help. Join now!</h2>

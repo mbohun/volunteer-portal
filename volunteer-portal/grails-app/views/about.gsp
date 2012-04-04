@@ -23,7 +23,7 @@
       </style>
 
   </head>
-  <body class="page-parent page-child parent-pageid-27568 page-template page-template-vp-expeditions-php sublevel sub-site volunteerportal">
+  <body class="sublevel sub-site volunteerportal">
 
     <nav id="nav-site">
       <ul class="sf sf-js-enabled">
