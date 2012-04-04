@@ -18,7 +18,12 @@
     </nav>
     <header id="page-header">
       <div class="inner">
-        <nav id="breadcrumb"><ol><li><a href="${createLink(uri: '/')}">Biodiversity Volunteer Portal</a></li> <li class="last">Volunteers</li></ol></nav>
+        <nav id="breadcrumb">
+          <ol>
+            <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+            <li class="last">Volunteers</li>
+          </ol>
+        </nav>
         <h1>Volunteer list <g:if test="${projectInstance}">for ${projectInstance.name}</g:if></h1>
         </div><!--inner-->
     </header>

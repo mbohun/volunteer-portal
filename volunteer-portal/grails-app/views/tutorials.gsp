@@ -39,10 +39,13 @@
         <g:if test="${flash.message}">
           <div class="message">${flash.message}</div>
         </g:if>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:message code="default.tutorials.label" default="Tutorials" /></span>
-        </div>
+
+        <nav id="breadcrumb">
+          <ol>
+            <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+            <li class="last"><g:message code="default.tutorials.label" default="Tutorials" /></li>
+          </ol>
+        </nav>
         <hgroup>
           <h1>Tutorials</h1>
         </hgroup>

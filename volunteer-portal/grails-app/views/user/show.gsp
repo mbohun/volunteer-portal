@@ -51,13 +51,13 @@
     <div class="inner">
       <nav id="breadcrumb">
         <ol>
-          <li><a href="${createLink(uri: '/')}">Biodiversity Volunteer Portal</a></li>
+          <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
           <li><a href="${createLink(controller: 'user', action:'list')}">Volunteers</a></li>
           <li class="last">${fieldValue(bean: userInstance, field: "displayName")}</li>
         </ol>
       </nav>
       <h1>Volunteer: ${fieldValue(bean: userInstance, field: "displayName")} <g:if test="${userInstance.userId == currentUser}">(thats you!)</g:if></h1>
-      </div><!--inner-->
+    </div><!--inner-->
   </header>
 
 <div class="inner">

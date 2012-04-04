@@ -21,13 +21,16 @@
           <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
           </g:if>
-          <div class="nav">
-              <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-              <span class="menuButton"><a class="home" href="${createLink(controller: 'newsItem', action:'list')}">News items</a></span>
-              <span class="menuButton"><g:formatDate date="${newsItemInstance?.created}" format="dd-MM-yyyy" />  - <g:link controller="project" action="show" id="${newsItemInstance?.project?.id}">${newsItemInstance?.project?.name}</g:link> - ${fieldValue(bean: newsItemInstance, field: "createdBy")}</span>
-          </div>
-          <h1>${fieldValue(bean: newsItemInstance, field: "title")}</h1>
-
+          <nav id="breadcrumb">
+            <ol>
+              <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+              <li><a href="${createLink(controller: 'newsItem', action:'list')}">News items</a></li>
+              <li class="last"><g:formatDate date="${newsItemInstance?.created}" format="dd-MM-yyyy" />  - <g:link controller="project" action="show" id="${newsItemInstance?.project?.id}">${newsItemInstance?.project?.name}</g:link> - ${fieldValue(bean: newsItemInstance, field: "createdBy")}</li>
+            </ol>
+          </nav>
+          <hgroup>
+            <h1>${fieldValue(bean: newsItemInstance, field: "title")}</h1>
+          </hgroup>
         </div>
       </header>
 

@@ -39,12 +39,47 @@
         <g:if test="${flash.message}">
           <div class="message">${flash.message}</div>
         </g:if>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:message code="default.about.label" default="About the Volunteer Portal" /></span>
-        </div>
+        <nav id="breadcrumb">
+          <ol>
+            <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+            <li class="last"><g:message code="default.about.label" default="About the Volunteer Portal" /></li>
+          </ol>
+        </nav>
         <h1>About the Volunteer Portal</h1>
       </div>
     </header>
+    <div class="body">
+      <div class="inner">
+        <p>
+        The <a href="http://www.ala.org.au">Atlas of Living Australia</a>, in collaboration with the <a href="http://www.australianmuseum.net.au">Australian Museum</a>, developed the Biodiversity Volunteer Portal to harness the power of online volunteers (also known as crowdsourcing) to digitise biodiversity data that is locked up in biodiversity collections, field notebooks and survey sheets.
+        </p>
+
+        <b>Why capture this data?</b>
+        <p>
+        This data has many uses, including:
+        <ul>
+          <li>understanding the relationships between species (important in determining potential agricultural pests or potential medical applications);</li>
+          <li>the distribution of species (for understanding how best to conserve individual species or ecosystems);</li>
+          <li>identification of species from morphological or genetic characters (for example being able to identify birds involved in aircraft incidents).</li>
+        </ul>
+        </p>
+
+        By helping us capture this information into digital form you are helping scientists and planners better understand, utilise, manage and conserve our precious biodiversity.
+
+        This data, once captured, becomes available through a broad range of mechanisms that make it accessible to the scientific and broader communities.  These mechanisms include websites such as :
+
+        <ul>
+          <li><a href="http://www.australianmuseum.net.au/research-and-collections">Individual institutions collections and associated databases</a></li>
+          <li>The <a href="http://www.ala.org.au">Atlas of Living Australia</a>
+          <li>The <a href="http://www.gbif.org/">Global Biodiversity Information Facility</a></li>
+        </ul>
+
+        <b>Some useful references:</b>
+          <ul>
+            <li><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1693343/pdf/15253354.pdf">Biodiversity informatics: managing and applying primary biodiversity data</a></li>
+            <li><a href="http://www.youtube.com/watch?v=x9404is3RJ8">Video showing how data is shared and what it is used for</a></li>
+          </ul>
+      </div>
+    </div>
   </body>
 </html>
