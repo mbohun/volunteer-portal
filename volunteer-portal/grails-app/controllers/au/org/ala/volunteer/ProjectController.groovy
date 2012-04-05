@@ -64,13 +64,10 @@ class ProjectController {
                 }
             }
 
-            // get the 5 most recent news items
-            def recentNewsItems = projectInstance.newsItems.toArray()
-            if (recentNewsItems.size() > 5) {
-                recentNewsItems = recentNewsItems.getAt( [0..4] )
-            }
+            def items = projectInstance.newsItems.asList()
+            def newsItem = items.size() > 0 ? items[0] : null;
 
-            render(view: "index", model: [projectInstance: projectInstance, taskCount: taskCount, tasksTranscribed: tasksTranscribed, roles:roles, recentNewsItems: recentNewsItems])
+            render(view: "index", model: [projectInstance: projectInstance, taskCount: taskCount, tasksTranscribed: tasksTranscribed, roles:roles, newsItem: newsItem])
         }
     }
 
@@ -306,7 +303,7 @@ class ProjectController {
 
             def volunteer = User.findAll("from User where userId in (select distinct fullyTranscribedBy from Task where project_id = ${project.id})")
 
-            projects[project.id] = [id: project.id, project: project, iconLabel: iconLabel, iconImage: iconImage, volunteerCount: volunteer.size(), countComplete: taskCounts[project.id] , percentComplete: percent ? Math.round(percent) : 0 ]
+            projects[project.id] = [id: project.id, project: project, iconLabel: iconLabel, iconImage: iconImage, volunteerCount: volunteer.size(), countComplete: fullyTranscribedCounts[project.id] , percentComplete: percent ? Math.round(percent) : 0 ]
 
         }
 

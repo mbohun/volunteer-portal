@@ -50,19 +50,18 @@
     </header>
     <div class="body">
       <div class="inner">
-        <p>
+        <p style="font-size: 1.2em">
         The <a href="http://www.ala.org.au">Atlas of Living Australia</a>, in collaboration with the <a href="http://www.australianmuseum.net.au">Australian Museum</a>, developed the Biodiversity Volunteer Portal to harness the power of online volunteers (also known as crowdsourcing) to digitise biodiversity data that is locked up in biodiversity collections, field notebooks and survey sheets.
         </p>
 
         <b>Why capture this data?</b>
-        <p>
+        <br />
         This data has many uses, including:
         <ul>
           <li>understanding the relationships between species (important in determining potential agricultural pests or potential medical applications);</li>
           <li>the distribution of species (for understanding how best to conserve individual species or ecosystems);</li>
           <li>identification of species from morphological or genetic characters (for example being able to identify birds involved in aircraft incidents).</li>
         </ul>
-        </p>
 
         By helping us capture this information into digital form you are helping scientists and planners better understand, utilise, manage and conserve our precious biodiversity.
 

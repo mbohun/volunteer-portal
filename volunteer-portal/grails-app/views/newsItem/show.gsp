@@ -25,7 +25,7 @@
             <ol>
               <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
               <li><a href="${createLink(controller: 'newsItem', action:'list')}">News items</a></li>
-              <li class="last"><g:formatDate date="${newsItemInstance?.created}" format="dd-MM-yyyy" />  - <g:link controller="project" action="show" id="${newsItemInstance?.project?.id}">${newsItemInstance?.project?.name}</g:link> - ${fieldValue(bean: newsItemInstance, field: "createdBy")}</li>
+              <li class="last"><g:formatDate date="${newsItemInstance?.created}" format="dd-MM-yyyy" />  - <g:link controller="project" action="index" id="${newsItemInstance?.project?.id}">${newsItemInstance?.project?.name}</g:link> - ${fieldValue(bean: newsItemInstance, field: "createdBy")}</li>
             </ol>
           </nav>
           <hgroup>

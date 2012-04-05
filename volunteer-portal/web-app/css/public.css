@@ -579,9 +579,11 @@ div.list table tr.odd {
 }
 
 #recordsMap {
-    width: 400px;
-    height: 400px;
-    margin: 10px 0;
+    width: 204px;
+    height: 204px;
+    max-height: 204px;
+    max-width: 204px;
+    margin: 0px 0;
     /*float: right;*/
 }
 
@@ -715,3 +717,4 @@ tr.fieldNoteFields td input {
 .avatar {
     padding-top: 6px !important;
 }
+
