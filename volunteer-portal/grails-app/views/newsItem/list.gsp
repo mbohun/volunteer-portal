@@ -25,11 +25,17 @@
           <nav id="breadcrumb">
             <ol>
               <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-              <li class="last">News Items</li>
+              <li class="last">
+                <g:if test="${projectInstance}">
+                  ${projectInstance.name}&nbsp;
+                </g:if>
+                News Items
+              </li>
             </ol>
           </nav>
           <hgroup>
-            <h1>News Items</h1>
+            <h1>News Items<g:if test="${projectInstance}"> - ${projectInstance.featuredLabel}</g:if>
+            </h1>
           </hgroup>
         </div>
       </header>
@@ -65,7 +71,8 @@
 
                             <td>${newsItemInstance?.body}</td>
 
-                            <td style="vertical-align: top">${newsItemInstance?.project?.featuredLabel}
+                            <td style="vertical-align: top">
+                              <g:link controller="project" action="index" id="${newsItemInstance?.project?.id}">${newsItemInstance?.project?.featuredLabel}</g:link>
                             </td>
                         
                         </tr>

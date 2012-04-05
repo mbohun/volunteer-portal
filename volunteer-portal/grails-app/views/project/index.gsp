@@ -191,9 +191,11 @@
           <article class="margin-bottom-0">
             <time datetime="${formatDate(format: "dd MMMM yyyy", date: newsItem.created)}"><g:formatDate format="dd MMMM yyyy" date="${newsItem.created}" /></time>
             <br />
-            <h3><a href="${createLink(controller: 'newsItem', action: 'show', id: newsItem.id)}">${newsItem.title}</a></h3>
+            <h3><a href="${createLink(controller: 'newsItem', action: 'list', id: projectInstance.id)}">${newsItem.title}</a></h3>
             ${newsItem.body}
+            %{--<g:link controller="newsItem" action="list" id="${projectInstance.id}">All ${projectInstance.featuredLabel} news...</g:link>--}%
           </article>
+
         </g:if>
         </section>
 
