@@ -29,8 +29,8 @@
       <ul class="sf sf-js-enabled">
         <li class="nav-bvp"><a href="${createLink(uri:'/')}">Biodiversity Volunteer Portal</a></li>
         <li class="nav-expeditions"><g:link controller="project" action="list">Expeditions</g:link></li>
-        <li class="nav-tutorials selected"><a href="${createLink(uri:'/tutorials.gsp')}">Tutorials</a></li>
-        <li class="nav-submitexpedition"><a href="${createLink(uri:'/submitAnExpedition.gsp')}">Submit an Expedition</a></li>
+        <li class="nav-tutorials"><a href="${createLink(uri:'/tutorials.gsp')}">Tutorials</a></li>
+        <li class="nav-submitexpedition selected"><a href="${createLink(uri:'/submitAnExpedition.gsp')}">Submit an Expedition</a></li>
         <li class="nav-aboutbvp"><a href="${createLink(uri:'/about.gsp')}">About the Portal</a></li>
       </ul>
     </nav>
@@ -40,41 +40,31 @@
         <g:if test="${flash.message}">
           <div class="message">${flash.message}</div>
         </g:if>
-
         <nav id="breadcrumb">
           <ol>
             <li><a href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            <li class="last"><g:message code="default.tutorials.label" default="Tutorials" /></li>
+            <li class="last"><g:message code="default.submit.label" default="Submit an Expedition" /></li>
           </ol>
         </nav>
-        <hgroup>
-          <h1>Tutorials</h1>
-        </hgroup>
+        <h1>Submit an Expedition</h1>
       </div>
     </header>
     <div class="body">
       <div class="inner">
-        <table class="bvp-expeditions">
-          <tr>
-            <td>
-              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Introduction.swf"><g:message code="default.tutorial.introduction.label" default="Introduction"/></a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Mapping_Tool2.swf"><g:message code="default.tutorial.introduction.label" default="Mapping tool"/></a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <A href="${org.codehaus.groovy.grails.commons.ConfigurationHolder.config.server.url}/video/Transcribing.swf"><g:message code="default.tutorial.introduction.label" default="Transcribing"/></a>
-            </td>
-          </tr>
-        </table>
+        <p style="font-size: 1.2em">
+        The Biodiversity Volunteer Portal is open to any institution or individual who has suitable biodiversity
+        information that needs transcribing, whether that be in the form of specimen labels, field notes, survey sheets
+        or something similar.
+        </p>
+
+        <p>
+        Any proposed expedition will need to conform to an existing transcription task template, be suitable for an
+        existing template with some minor adjustment, or have sufficient funds to enable the development of a new
+        transcription task template.
+        </p>
+        So if you think you have some material that would be suitable for creating an expedition in the Biodiversity
+        Volunteer Portal please get in touch with me paul.flemons at austmus.gov.au
       </div>
-
     </div>
-
-
   </body>
 </html>
