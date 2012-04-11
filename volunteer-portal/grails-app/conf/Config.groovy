@@ -32,7 +32,7 @@ if (!ala.baseURL) {
 \******************************************************************************/
 if (!security.cas.urlPattern) {
     security.cas.urlPattern = "/transcribe/task/.*,/transcribe/save.*,/transcribe/.*,/validate/save.*," +
-            "/validate/.*,/user/.*,/project/((?!index).)*,/task/.*,/newsItem/.*, /picklist/.*, /admin/.*, /frontPage/.*"
+            "/validate/.*,/user/.*,/project/((?!index).)*,/task/.*,/newsItem/.*, /picklist/.*, /admin/.*, /frontPage/.*,/ajax/userReport"
 }
 if (!security.cas.urlExclusionPattern) {
     security.cas.urlExclusionPattern = "/images.*,/css.*,/js.*"

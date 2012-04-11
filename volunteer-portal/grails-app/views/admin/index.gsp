@@ -26,6 +26,10 @@
             <td>Display a list of email address for all volunteers</td>
           </tr>
           <tr>
+            <td><button style="margin: 6px" onclick="location.href='${createLink(controller:'ajax', action:'userReport', params: [wt: 'csv'])}'">User report</button></td>
+            <td>Users and their various counts and last activity etc...</td>
+          </tr>
+          <tr>
             <td><button style="margin: 6px" onclick="location.href='${createLink(controller:'picklist', action:'manage')}'">Bulk manage picklists</button></td>
             <td>Allows modification to the values held in various picklists</td>
           </tr>
