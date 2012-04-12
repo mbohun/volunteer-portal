@@ -118,18 +118,21 @@
           </ul>
         </section>
         <section>
-          <h2>News</h2>
-          <article>
-            <time datetime="${formatDate(format: "yyyy-MM-dd", date: newsItem.created)}"><g:formatDate format="dd MMM yyyy" date="${newsItem.created}" /></time>
-            <h3><g:link action="show" controller="newsItem" id="${newsItem.id}">${newsItem.title}</g:link></h3>
-            <p>
-              ${newsItem.shortDescription}
-              <g:if test="${frontPage.useGlobalNewsItem == false}">
-                <g:link controller="newsItem" action="show" id="${newsItem.id}">Read more...</g:link>
+          <g:if test="${newsItem}">
+            <h2>News</h2>
+            <article>
+              <g:if test="${newsItem?.created}">
+                <time datetime="${formatDate(format: "yyyy-MM-dd", date: newsItem.created)}"><g:formatDate format="dd MMM yyyy" date="${newsItem.created}" /></time>
               </g:if>
-            </p>
-            
-          </article>
+              <h3><g:link action="show" controller="newsItem" id="${newsItem.id}">${newsItem.title}</g:link></h3>
+              <p>
+                ${newsItem.shortDescription}
+                <g:if test="${frontPage.useGlobalNewsItem == false}">
+                  <g:link controller="newsItem" action="show" id="${newsItem.id}">Read more...</g:link>
+                </g:if>
+              </p>
+            </article>
+          </g:if>
         </section>
       </div>
 

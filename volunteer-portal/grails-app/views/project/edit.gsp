@@ -119,6 +119,15 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="disableNewsItems"><g:message code="project.disableNewsItems.label" default="Disable news items for this project" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: projectInstance, field: 'disableNewsItems', 'errors')}">
+                                    <g:checkBox name="disableNewsItems" value="${projectInstance?.disableNewsItems}" />
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="newsItems"><g:message code="project.newsItems.label" default="News Items" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: projectInstance, field: 'newsItems', 'errors')}">

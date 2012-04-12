@@ -187,7 +187,7 @@
         <section>
         <h2>${projectInstance.featuredLabel} overview</h2>
         <img src="${projectInstance.featuredImage}" alt="" title="${projectInstance.name}" width="200" height="124" class="alignleft size-full"/>${projectInstance.description}
-        <g:if test="${newsItem}">
+        <g:if test="${!projectInstance.disableNewsItems && newsItem}">
           <h2>${projectInstance.featuredLabel} news</h2>
           <article class="margin-bottom-0">
             <time datetime="${formatDate(format: "dd MMMM yyyy", date: newsItem.created)}"><g:formatDate format="dd MMMM yyyy" date="${newsItem.created}" /></time>
