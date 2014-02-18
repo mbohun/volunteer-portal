@@ -42,36 +42,38 @@ class FieldService {
                f.name in (:fieldNames) and
                f.task.project = :projectInstance and
                (lower(f.value) like :query or lower(f.task.fullyTranscribedBy) like :query or lower(f.task.externalIdentifier) like :query)
-               order by 1""", [projectInstance: projectInstance, query: '%' + query + '%', fieldNames: fieldNames], params)
+               """, [projectInstance: projectInstance, query: '%' + query + '%', fieldNames: fieldNames], params)
         } else {
             taskList = Field.executeQuery(
             """select distinct f.task from Field f
                where f.superceded = false and
                f.task.project = :projectInstance and
                (lower(f.value) like :query or lower(f.task.fullyTranscribedBy) like :query or lower(f.task.externalIdentifier) like :query)
-               order by 1""", [projectInstance: projectInstance, query: '%' + query + '%'], params)
+               """, [projectInstance: projectInstance, query: '%' + query + '%'], params)
         }
 
         taskList?.toList()
     }
 
     public int countAllTasksByFieldValueQuery(Project projectInstance, String query, List fieldNames = []) {
+
+        query = query?.toLowerCase()
         def count
         if (fieldNames) {
             count = Field.executeQuery(
-            """select count(distinct f.task) from Field f
+            """select count(distinct f.task) as count from Field f
                where f.superceded = false and
                f.name in (:fieldNames) and
                f.task.project = :projectInstance and
                (lower(f.value) like :query or lower(f.task.fullyTranscribedBy) like :query or lower(f.task.externalIdentifier) like :query)
-               order by 1""", [projectInstance: projectInstance, query: '%' + query + '%', fieldNames: fieldNames])
+               """, [projectInstance: projectInstance, query: '%' + query + '%', fieldNames: fieldNames])
         } else {
             count = Field.executeQuery(
             """select count(distinct f.task) from Field f
                where f.superceded = false and
                f.task.project = :projectInstance and
                (lower(f.value) like :query or lower(f.task.fullyTranscribedBy) like :query or lower(f.task.externalIdentifier) like :query)
-               order by 1""", [projectInstance: projectInstance, query: '%' + query + '%'])
+               """, [projectInstance: projectInstance, query: '%' + query + '%'])
         }
         return count?.get(0) as Integer
     }
