@@ -18,7 +18,7 @@ environments {
             username="postgres"
             password="password"
             // url = "jdbc:postgresql://localhost/volunteers-prod"
-            url = "jdbc:postgresql://localhost/volunteers"
+            url = "jdbc:postgresql://localhost/volunteer-testcopy"
             loggingSql = false
         }
     }
