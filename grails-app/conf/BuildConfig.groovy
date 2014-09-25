@@ -59,6 +59,7 @@ grails.project.dependency.resolution = {
             excludes 'javassist'
         }
         compile ':scaffolding:2.0.3'
+        build ":release:3.0.1"
     }
 
     dependencies {
