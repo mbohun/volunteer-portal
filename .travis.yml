@@ -8,19 +8,28 @@ before_install:
 - rm -rf ~/.gvm
 - curl -s get.gvmtool.net > ~/install_gvm.sh
 - chmod 775 ~/install_gvm.sh
-- "~/install_gvm.sh"
+- ~/install_gvm.sh
 - echo "gvm_auto_answer=true" > ~/.gvm/etc/config
 - source ~/.gvm/bin/gvm-init.sh
-- GRAILS_VERSION=`grep '^app\.grails\.version=' ./application.properties | sed -e
-  's/^app\.grails\.version=//g'`
+- GRAILS_VERSION=`grep '^\s*app.grails.version' application.properties | sed -e 's/^\s*app\.grails\.version=//g'
+  | tr -d "\r"`
+- echo "GRAILS_VERSION:$GRAILS_VERSION"
 - gvm install grails $GRAILS_VERSION || true
 before_script:
-- mkdir -p ~/.grails; wget -q -O ~/.grails/settings.groovy https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_grails_settings_old.groovy
-- MAVEN_REPO="ala-repo-snapshot"; grep '^app\.version=' ./application.properties |
-  grep -q "\-SNAPSHOT"; if [ "$?" = "1" ]; then MAVEN_REPO="ala-repo-release"; fi;
-script: grails clean && grails upgrade --non-interactive && grails refresh-dependencies
-  --non-interactive && grails prod war --non-interactive && grails prod maven-deploy --repository=$MAVEN_REPO
+- GRAILS_VERSION_NUMBER=`echo $GRAILS_VERSION | sed -e 's/\.[0-9]*$//g' -e 's/\.//g'`
+- echo "GRAILS_VERSION_NUMBER:$GRAILS_VERSION_NUMBER"
+- GRAILS_SETTINGS_FILE="travis_grails_settings_new.groovy"
+- if [ "$GRAILS_VERSION_NUMBER" -lt "23" ]; then GRAILS_SETTINGS_FILE="travis_grails_settings_old.groovy";
+  fi;
+- echo "GRAILS_SETTINGS_FILE:$GRAILS_SETTINGS_FILE"
+- mkdir -p ~/.grails; wget -q -O ~/.grails/settings.groovy https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/$GRAILS_SETTINGS_FILE
+- MAVEN_REPO="ala-repo-snapshot"
+- grep '^\s*app\.version=' ./application.properties | grep -q "\-SNAPSHOT"; if [ "$?"
+  = "1" ]; then MAVEN_REPO="ala-repo-release"; fi;
+- echo "MAVEN_REPO:$MAVEN_REPO"
+script: grails clean && grails refresh-dependencies --non-interactive && grails prod
+  war --non-interactive && grails prod maven-deploy --repository=$MAVEN_REPO --non-interactive
 env:
   global:
-  - secure: a+SmC0P+i7A8had0Aj3ZBTyQDs1VShLNgMtsplhct75lJSDRBzSgp5XX2kh7xlzmVIXA71m7RAjRsy1kQZgZoO6+vxGT35oE1zYSRYbcgNjD2kt67lceCyE1ncxvmiPpBTvhOs/eZ/dRkzbuU1HD0eEg3tR0bP+O8svBtRZAVqo=
-  - secure: i46AlcEOx/CawVf4V9llRcLcFZrOvrFG2vBeIQ2WWuI0o+t3GYYV2Rd+uxEQ7f7OCzShZvRUb1KdhydObKYZGpbocvIAyKN3inw43UTWwXa3O1+F10+PpNdiFVC8QBCnHiTJ7AXti/EYymmepy9VNiONJhPirrom3XrxX3XhBBk=
+  - secure: d5tl7bMUr/1PBXZ/4eg2ZJgi2ihqV8cjmCVbt2e8TZEiwMPOLwuMJMKFPIoEYgxo9PIp8Lss2hRQC6/GuSuakHzIowLFKCJCIymPcdyFTRi0li7IbW6WJV0SXEe48T/dqU4Md81Bb1bdNgp1VblnHjnP3Ulr04omVXPykwgX1eo=
+  - secure: UOZt330JF3vgAcqHFpssZd628JxnK+Fvo48GKVbBK1h6oz8mJTaopJGRCrInDHXTfiYTDgQ/oMoO+R4LsMFJTuBjeXRPJeBQJFEorpvO469j65wG9ghPqDOfoVizn0N4ZzqT2IHk8hIIOKOEwTp7cvFxjvrNDARO0EYInWWAG6s=
